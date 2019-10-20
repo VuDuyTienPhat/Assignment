@@ -1,0 +1,19 @@
+<h3 style="color:red;text-align: center;
+border: 1px solid black; border-radius: 100%;
+background: black;">Xin chào {{username}}</h3>
+<div class="row">
+    <div class="col-6" *ngFor="let monHoc of listMonHoc | paginate: { itemsPerPage: 4, currentPage: p } ">
+        <div class="card text-center">
+            <a [routerLink]="['/thiTN',monHoc.Id]" style="text-decoration: none;">
+                <div>
+                    <img src="../../assets/images/{{monHoc.Logo}}" alt="..."  width="50%">
+                </div>
+                <div class="card-footer text-muted" style="height: auto; ">
+                    {{monHoc.Name}}
+                </div>
+            </a>
+        </div>
+        <br>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

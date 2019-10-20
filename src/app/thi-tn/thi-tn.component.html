@@ -1,0 +1,32 @@
+<!-- margin bottom 100% tức là cái class card nó cách 2 cái nút đúng bằng chiều cao của nó(cái card) -->
+<div class="card " style="margin-bottom:10% ;">
+
+  <div class="card-header">
+    {{subject.Name}}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      {{Quizs[i].Text}}
+    </div>
+    <hr>
+    <form action="">
+      <div class="form-group">
+        <p *ngFor="let answer of Answers">
+          <input type="radio" name="{{Quizs[i].Id}}" value="answer.Id" [(ngModel)]="dapAnUser"
+            [ngModelOptions]="{standalone: true}" >{{answer.Text}}
+        </p>
+
+
+
+      </div>
+    </form>
+
+
+  </div>
+  <div class="card-footer text-muted">
+
+  </div>
+</div>
+
+<button class="btn btn-primary" style="margin:10px" (click)="Previous()">Previous</button>
+<button class="btn btn-primary" (click)="Next()">Next</button>
