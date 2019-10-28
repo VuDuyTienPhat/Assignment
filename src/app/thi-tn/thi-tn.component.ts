@@ -20,6 +20,7 @@ export class ThiTNComponent implements OnInit {
   constructor(private y: DataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(`taoday=${this.y.username}`);
     this.route.paramMap.subscribe(params=>{
       this.logged=params.get('logged');
       console.log(this.logged)
@@ -61,7 +62,8 @@ export class ThiTNComponent implements OnInit {
         console.log(this.Id);
         this.subject = this.subjects.find(x => {
           return x.Id == this.Id
-        });
+        });//tìm subject để lấy ra subject.Name gán vô title tên môn  
+        console.log(`this.subject=${JSON.stringify(this.subject)}`)
         //lấy các câu hỏi-Quizs từ môn học đó
         this.y.getQuiz(this.Id).subscribe(Quizs => {
           this.Quizs = Quizs;

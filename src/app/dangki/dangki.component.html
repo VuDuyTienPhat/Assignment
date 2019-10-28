@@ -5,16 +5,20 @@
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Họ và tên</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Nguyen Van A" [(ngModel)]="formStudent.fullname" [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Nguyen Van A"
+                    [(ngModel)]="formStudent.fullname" [ngModelOptions]="{standalone: true}" name="hoten"
+                    #hoTenControl="ngModel" required>
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom02">Ngày tháng năm sinh</label>
-                <input type="date" class="form-control" id="validationCustom02" [(ngModel)]="formStudent.birthday" [ngModelOptions]="{standalone: true}">
+                <input type="date" class="form-control" id="validationCustom02" [(ngModel)]="formStudent.birthday"
+                    [ngModelOptions]="{standalone: true}">
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustomUsername">Email</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="validationCustomUsername"  [(ngModel)]="formStudent.email" [ngModelOptions]="{standalone: true}">
+                    <input type="text" class="form-control" id="validationCustomUsername"
+                        [(ngModel)]="formStudent.email" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
@@ -22,22 +26,30 @@
         <label for="exampleInputEmail1" style="margin-left: 350px">Mật Khẩu</label>
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control" placeholder="nhập tài khoản" [(ngModel)]="formStudent.username" [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control" placeholder="nhập tài khoản" [(ngModel)]="formStudent.username"
+                    [ngModelOptions]="{standalone: true}">
             </div>
 
             <div class="col">
-                <input type="password" class="form-control" placeholder="Nhập mật khẩu" [(ngModel)]="formStudent.password" [ngModelOptions]="{standalone: true}">
+                <input type="password" class="form-control" placeholder="Nhập mật khẩu"
+                    [(ngModel)]="formStudent.password" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
 
         <label for="exampleInputEmail1" style="margin-top: 10px;">Giới Tính:</label>
         <br>
-        <input type="radio" name="gioitinh" value="true"  [(ngModel)]="formStudent.gender" [ngModelOptions]="{standalone: true}"> Nam<br>
-        <input type="radio" name="gioitinh" value="false" [(ngModel)]="formStudent.gender" [ngModelOptions]="{standalone: true}"> Nữ<br>
+        <input type="radio" name="gioitinh" value="true" [(ngModel)]="formStudent.gender"
+            [ngModelOptions]="{standalone: true}"> Nam<br>
+        <input type="radio" name="gioitinh" value="false" [(ngModel)]="formStudent.gender"
+            [ngModelOptions]="{standalone: true}"> Nữ<br>
         <br>
         <button type="submit" class="btn btn-primary" (click)="Addthongtin()">Submit</button>
     </form>
     <br>
+
+    <div *ngIf="hoTenControl.touched&&hoTenControl.valid==false">
+        <h4 class="alert alert-danger">Họ và tên không được bỏ trống</h4>
+    </div>
 
     <h2 style="color:red">Danh sách tài khoản đã đăng ký</h2>
     <table class="table">

@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row banner" >
-        <img src="../assets/images/banner.png" alt="" >
+    <div class="row banner">
+        <img src="../assets/images/banner.png" alt="">
     </div>
     <div class="row">
 
@@ -10,6 +10,7 @@
             <li><a class="nav-link" [routerLink]="['/lienhe']"> Liên hệ</a></li>
             <li><a class="nav-link" [routerLink]="['/gopy']"> Góp ý</a></li>
             <li><a class="nav-link" [routerLink]="['/hoidap']"> Hỏi đáp</a></li>
+            <li><a class="nav-link" [routerLink]="['/hoidap']"> {{title}}</a></li>
             <div class="form-inline my-2 my-lg-0" style="float:right">
                 <ul class="navbar-nav ">
                     <li class=" dropdown" style="background:black">
@@ -24,24 +25,26 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" [routerLink]="['/quenmatkhau']">Quên mật khẩu</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" [routerLink]="['/dangnhap']">Đăng Xuất</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" [routerLink]="['/doimatkhau']">Đổi mật khẩu</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" [routerLink]="['/suadoitaikhoan']">Cập nhật tài khoản</a>
+                            
                         </div>
                     </li>
                 </ul>
+            
             </div>
+      
         </div>
     </div>
-    <br> 
+    <br>
     <div class="row">
         <div class="col-9">
             <router-outlet></router-outlet>
         </div>
 
-        <div class="col-3"> 
+        <div class="col-3">
             <div class="accordion" id="accordionExample">
                 <div class="card">
                     <div class="card-header" id="headingOne">
@@ -56,8 +59,9 @@
                         data-parent="#accordionExample">
                         <ul class="list-group">
                             <div *ngFor="let danhmuc of danhmuc">
-                                <a [routerLink]="['/thitracnghiem',danhmuc.Id]" style="text-decoration: none" id="danhmuc">
-                                    <li class="list-group-item" >{{danhmuc.Name}}</li>
+                                <a [routerLink]="['/thitracnghiem',danhmuc.Id]" style="text-decoration: none"
+                                    id="danhmuc">
+                                    <li class="list-group-item">{{danhmuc.Name}}</li>
                                 </a>
                             </div>
                         </ul>

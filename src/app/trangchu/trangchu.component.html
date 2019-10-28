@@ -1,6 +1,4 @@
-<h3 style="color:red;text-align: center;
-border: 1px solid black; border-radius: 100%;
-background: black;">Xin chào {{username}}</h3>
+<h3 style="text-align: center;" class="alert alert-success">Xin chào <span style="color:red"></span></h3>
 <div class="row">
     <div class="col-6" *ngFor="let monHoc of listMonHoc | paginate: { itemsPerPage: 4, currentPage: p } ">
         <div class="card text-center">
@@ -17,3 +15,6 @@ background: black;">Xin chào {{username}}</h3>
     </div>
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
+
+<!-- {{this.y.getTen()}} -->
+<!-- phải chuyển y sang public mới sài được -->

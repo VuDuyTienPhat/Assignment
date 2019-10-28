@@ -12,7 +12,7 @@ export class TrangchuComponent implements OnInit {
   listMonHoc;
   STTCauHoi=0;
   username;//nhận giá trị dc gửi từ trang đổi mk
-
+  // public tenTK=this.y.username;
   constructor(private y:DataService,private route:ActivatedRoute) { }
 
   ngOnInit() {

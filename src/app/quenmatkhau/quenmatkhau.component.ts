@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../students'
+import { DataService } from '../service.service';
 @Component({
   selector: 'app-quenmatkhau',
   templateUrl: './quenmatkhau.component.html',
@@ -8,74 +9,51 @@ import { Student } from '../students'
 export class QuenmatkhauComponent implements OnInit {
   formSudent = {
     username: "",
-    fullname: "",
     email: "",
-    passwordnew: "",
   }
-  students: Student[] =
-    [
-      {
-        id: 1,
-        username: "teonv",
-        password: "iloveyou",
-        fullname: "Nguyễn Văn Tèo",
-        email: "teonv@fpt.edu.vn",
-        gender: "nam",
-        birthday: new Date(1995, 12, 21),
-      },
-      {
-        id: 2,
-        username: "pheonv",
-        password: "iloveyou",
-        fullname: "Nguyễn Văn Chí Phèo",
-        email: "pheonv@fpt.edu.vn",
-        gender: "nam",
-        birthday: new Date(1985, 10, 11),
-      },
-      {
-        id: 3,
-        username: "nopt",
-        password: "iloveyou",
-        fullname: "Phạm Thị Nở",
-        email: "nopt@fpt.edu.vn",
-        gender: "nu",
-        birthday: new Date(1993, 5, 15),
-      }
-    ]
-  constructor() { }
+  hiddenbaoloi: Boolean = true;
+  hiddenshowpass: Boolean = true;
+  students;
+  constructor(private ds: DataService) { }
 
   ngOnInit() {
+
   }
-  dem = 0;
-  chua = -1;
-  EditPass() {
-    for (let index = 0; index < this.students.length; index++) {
-      if (this.formSudent.username === this.students[index].username &&
-        this.formSudent.fullname === this.students[index].fullname &&
-        this.formSudent.email === this.students[index].email) {
-        this.dem++;
-        this.chua = index;
+  student = null;//tìm ra tg student trùng username và email
+HienThiMatKhau() {
+  this.student=null;//để khi mỗi lần bấm lại là nó xóa tg student cũ đi
+  this.ds.getStudents().subscribe((data) => {
+    this.students = data;
+    for (let i = 0; i < this.students.length; i++) {
+      if (this.students[i].username == this.formSudent.username &&
+        this.students[i].email == this.formSudent.email) {
+        this.student = this.students[i];
+        break;
       }
-      
     }
-    if (this.dem === 1) {
-      confirm("Thông tin chính xác,bạn có chắc muốn đổi?")
-      this.students[this.chua].password = this.formSudent.passwordnew;
-      this.formSudent = {
-        username: "",
-        fullname: "",
-        email: "",
-        passwordnew: "",
-      }
+    console.log(this.student);
+    if (this.student == null) {
+      // alert('Username hoặc Email không đúng!');
+      this.hiddenbaoloi = false;
+      this.hiddenshowpass=true;
     }
     else {
-      alert("Thông tin không chính xác")
-      this.formSudent = {
-        username: "",
-        fullname: "",
-        email: "",
-        passwordnew: "",
-      }
+      this.hiddenbaoloi = true;
+      this.hiddenshowpass = false;
+
+      alert(`your password is ${this.student.password}`)
     }
-  }
+
+
+    // console.log(this.students)
+    // student=this.students.find(x=>{
+    //   return x.username==this.formSudent.username&&x.email==this.formSudent.email;
+    // });
+    // console.log(student);
+    // alert('mật khẩu của bạn là: ' + student.password)
+
+  });
+
+}
+
 }

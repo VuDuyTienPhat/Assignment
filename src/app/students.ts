@@ -6,5 +6,6 @@ export class Student{
         email: string;
         gender: string;
         birthday: Date;
+        
        
 }

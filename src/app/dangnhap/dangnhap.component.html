@@ -11,17 +11,17 @@
             <label for="formGroupExampleInput2">Mật khẩu</label>
             <input type="password" class="form-control" id="formGroupExampleInput2" [(ngModel)]="formStudent.password"
                 [ngModelOptions]="{standalone: true}">
-            <a href="" style="text-decoration: none">Quên mật khẩu</a><br>
+            <a [routerLink]="['/quenmatkhau']" style="text-decoration: none">Quên mật khẩu</a><br>
             <!-- <a href="" style="text-decoration: none">Đổi mật khẩu</a> -->
         </div>
         <div>
             <button type="buuto" class="btn btn-primary mb-2" (click)="Dangnhap()">Đăng Nhập</button>
         </div><br>
-        <div *ngIf="logged==true" >
+        <div [hidden]="dangNhapThanhCong" >
             <h2 class="alert alert-success">Đăng nhập thành công!</h2>
-
+            
         </div>
-        <div *ngIf="nhapsaithongtin==true&&logged==false">
+        <div [hidden]="nhapSaiThongTin">
             <h2 class="alert alert-danger">Username hoặc Password không đúng!</h2>
 
         </div>

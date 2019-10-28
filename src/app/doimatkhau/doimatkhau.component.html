@@ -13,18 +13,23 @@
             <!-- ô input -->
             <input type="text" class="form-control" [(ngModel)]="passwordCu" [ngModelOptions]="{standalone: true}">
         </div>
-        <div class="form-group">
-            <label for="formGroupExampleInput">Nhập Lại mật
-                khẩu cũ</label>
-            <!-- ô input -->
-            <input type="text" class="form-control" [(ngModel)]="passwordCu" [ngModelOptions]="{standalone: true}">
-        </div>
+
         <div class="form-group">
             <label for="formGroupExampleInput2">Nhập mật khẩu mới</label>
             <!-- ô input -->
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]="passwordMoi" [ngModelOptions]="{standalone: true}">
         </div>
-        <button type="button" class="btn btn-success" (click)="DoiMatKhau()">Submit</button>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">Nhập Lại mật
+                khẩu mới</label>
+            <!-- ô input -->
+            <input type="text" class="form-control" [(ngModel)]="nhapLaiPasswordMoi" [ngModelOptions]="{standalone: true}">
+        </div>
+        <button class="btn btn-success" (click)="DoiMatKhau()">Submit</button>
     </form>
     {{passwordCu}}
 </div>
+
+<!-- <h1>Mảng students.json</h1>
+<h4 style="color:red;font-weight: bold;">{{this.students|json}}</h4> -->

@@ -20,6 +20,8 @@ import { LienheComponent } from './lienhe/lienhe.component';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { ThiTNComponent } from './thi-tn/thi-tn.component';
 import {HttpClientModule } from '@angular/common/http'
+import { DataService } from './service.service';
+import { EditinfoComponent } from './editinfo/editinfo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,7 @@ import {HttpClientModule } from '@angular/common/http'
     LienheComponent,
     QuenmatkhauComponent,
     ThiTNComponent,
+    EditinfoComponent,
     
     
     
@@ -59,14 +62,14 @@ import {HttpClientModule } from '@angular/common/http'
         {path:'gioithieu',component:GioithieuComponent},
         {path:'gopy',component:GopyComponent},
         {path:'hoidap',component:HoidapComponent},
-        {path:'suadoitaikhoan',component:SuadoitaikhoanComponent},
+        {path:'suadoitaikhoan',component:EditinfoComponent},
         {path:'thiTN/:Id',component:ThiTNComponent},
        
-        { path: '**', redirectTo: 'trangchu', pathMatch: 'full' },
+        // { path: '**', redirectTo: 'trangchu', pathMatch: 'full' },
       ]
     )
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
