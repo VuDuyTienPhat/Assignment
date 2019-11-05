@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
 @Component({
   selector: 'app-thi-tn',
   templateUrl: './thi-tn.component.html',
@@ -14,9 +13,11 @@ export class ThiTnComponent implements OnInit {
   tenMonHoc;// tên môn học đầy đủ
   Quizs;// những câu hỏi trong môn học đó
   dapAnUser = null;
-  MangDapAn;
-  cur = 1;
-  mark = 0;
+  MangDapAn;  cur = 1;  mark = 0;
+  disableButtonNext: Boolean = true;
+  disableInput:Boolean=false;disableSubmit=false;
+  xanhla=false;
+
   constructor(private ds: DataService, private route: ActivatedRoute,
     private router: Router) { }
 
@@ -41,27 +42,29 @@ export class ThiTnComponent implements OnInit {
 
     });
 
-  this.countdown()
+    this.countdown()
 
   }
   // i=0;
   submit(quiz) {
-    console.log(this.dapAnUser)
-    console.log(typeof this.dapAnUser);
-    console.log(quiz.AnswerId);
-    console.log(typeof quiz.AnswerId);
+
+
     if (this.dapAnUser == null) {
       alert('bạn chưa chọn đáp án');
     }
+    //chọn đáp án+ấn submit rồi mới cho chọn nút next
     else {
+      this.disableButtonNext = false;
+      this.disableSubmit=true;
+      this.disableInput=true;
       if (quiz.AnswerId == +this.dapAnUser) {
         alert('đúng rồi')
-        this.cur++;
+
         this.mark++;
       }
       else {
         alert('sai roi');
-        this.cur++;
+
       }
       this.dapAnUser = null;
     }
@@ -71,6 +74,12 @@ export class ThiTnComponent implements OnInit {
     // else{
     //   alert('sai rồi ');
     // }
+  }
+  Next() {
+    this.cur++;
+    this.disableButtonNext = true; 
+    this.disableSubmit=false;
+    this.disableInput=false;
   }
   fullTimeNavigateToResult() {
     this.router.navigate(['/trangchu']);
@@ -100,11 +109,20 @@ export class ThiTnComponent implements OnInit {
       }
     }, 1000);
 
+
+  }
+
+  timCauDung(dapAnDung,dapAn){
+    if(dapAnDung==dapAn){
+      return true;
+    }
+    return false;
+  }
+ 
+
   
-  }
-  onSubmit(x){
-    console.log(x.value);
-  }
+
+
 
 
 

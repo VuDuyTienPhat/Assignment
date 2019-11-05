@@ -6,47 +6,53 @@
 <form action="" #formControl="ngForm" (ngSubmit)="onSubmit(formControl)">
     <!-- <button type="submit">coi formControl</button> -->
     <div class="container">
+        <!-- CARD -->
         <div class="card" *ngFor="let quiz of Quizs| paginate: { itemsPerPage: 1, currentPage: cur }">
             <div class="card-header" style="background: greenyellow;">
                 {{tenMonHoc}}
             </div>
+            <!-- card-body -->
             <div class="card-body bg-dark text-white">
                 <div class="row alert alert-danger">{{quiz.Text}}</div>
                 <hr>
-                <!-- form chứa 4 đáp án -->
+                <!-- 4 lựa chọn -->
                 <form action="">
                     <div class="form-group">
                         <!-- 1 cái form check là 1 cái radio button -->
                         <div class="form-check" *ngFor="let x of quiz.Answers">
-                            <!-- <input class="form-check-input" type="radio" name="{{quiz.Id}}" value="{{x.Id}}"
-                                [(ngModel)]="dapAnUser">
-                            <label class="form-check-label">
-                                {{x.Text}}
-                            </label> -->
-
-                            <label class="container">{{x.Text}}
-                                <input type="radio" name="{{quiz.Id}}" value="{{x.Id}}" [(ngModel)]="dapAnUser">
+                            <label [class.container]=true>{{x.Text}}
+                                <input type="radio" name="{{quiz.Id}}" value="{{x.Id}}" [(ngModel)]="dapAnUser"
+                                    [disabled]="disableInput">
                                 <span class="checkmark"></span>
                             </label>
 
 
                         </div>
                         <br>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-outline-success btn-lg" (click)="submit(quiz)"
+                                style="font-weight: bold;color:yellow" [disabled]="disableSubmit">Submit
+                            </button>
+                            <button class="btn btn-primary btn-lg" (click)="Next()" 
+                            [disabled]="disableButtonNext">Next
+                            </button>
+                        </div>
 
-                        <button class="btn btn-primary" (click)="submit(quiz)">Submit</button>
-                        <!-- <button class="btn btn-primary" (click)="Next">Next</button> -->
+                      
+
                     </div>
                 </form>
-
-
-
-
-
+                <!-- END chứa 4 lựa chọn -->
             </div>
+            <!-- END card-body  -->
+
+            <!-- FOOTER -->
             <div class="card-footer text-muted alert " style="background: greenyellow;">
                 <span style="font-weight: bold;color:black">Mark: {{mark}}/{{Quizs.length}}</span>
             </div>
+            <!-- END FOOTER -->
         </div>
+        <!-- END CARD -->
         <br><br>
         <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
     </div>
