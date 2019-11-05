@@ -1,11 +1,11 @@
 <div class="container">
     <H1 style="text-align: center;color:red;">Đăng Ký</H1>
     <br>
-    <form>
+    <form #studentForm>
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Họ và tên</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Nguyen Van A"
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Enter your fullname"
                     [(ngModel)]="formStudent.fullname" [ngModelOptions]="{standalone: true}" name="hoten"
                     #hoTenControl="ngModel" required>
             </div>
@@ -17,7 +17,7 @@
             <div class="col-md-4 mb-3">
                 <label for="validationCustomUsername">Email</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="validationCustomUsername"
+                    <input type="text" class="form-control" id="validationCustomUsername" placeholder="enter your email"
                         [(ngModel)]="formStudent.email" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
@@ -43,7 +43,7 @@
         <input type="radio" name="gioitinh" value="false" [(ngModel)]="formStudent.gender"
             [ngModelOptions]="{standalone: true}"> Nữ<br>
         <br>
-        <button type="submit" class="btn btn-primary" (click)="Addthongtin()">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="Addthongtin();studentForm.reset()">Submit</button>
     </form>
     <br>
 

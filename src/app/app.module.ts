@@ -18,10 +18,12 @@ import { DanhmucmonhocComponent } from './danhmucmonhoc/danhmucmonhoc.component'
 
 import { LienheComponent } from './lienhe/lienhe.component';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
-import { ThiTNComponent } from './thi-tn/thi-tn.component';
+import { ThiTnComponent } from './thi-tn/thi-tn.component';
 import {HttpClientModule } from '@angular/common/http'
 import { DataService } from './service.service';
 import { EditinfoComponent } from './editinfo/editinfo.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { ResultComponent } from './result/result.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,14 +39,17 @@ import { EditinfoComponent } from './editinfo/editinfo.component';
     
     LienheComponent,
     QuenmatkhauComponent,
-    ThiTNComponent,
+    ThiTnComponent,
     EditinfoComponent,
+    ResultComponent,
+    
     
     
     
   ],
 
   imports: [
+    MatRadioModule,
     HttpClientModule,   
     BrowserModule,
     FormsModule,
@@ -63,13 +68,14 @@ import { EditinfoComponent } from './editinfo/editinfo.component';
         {path:'gopy',component:GopyComponent},
         {path:'hoidap',component:HoidapComponent},
         {path:'suadoitaikhoan',component:EditinfoComponent},
-        {path:'thiTN/:Id',component:ThiTNComponent},
+        {path:'thiTN/:Id',component:ThiTnComponent},
+        {path:'result',component:ResultComponent},
        
         // { path: '**', redirectTo: 'trangchu', pathMatch: 'full' },
       ]
     )
   ],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

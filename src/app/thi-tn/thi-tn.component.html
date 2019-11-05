@@ -1,32 +1,54 @@
-<!-- margin bottom 100% tức là cái class card nó cách 2 cái nút đúng bằng chiều cao của nó(cái card) -->
-<div class="card " style="margin-bottom:10% ;">
-
-  <div class="card-header">
-    {{subject.Name}}
-  </div>
-  <div class="card-body">
-    <div class="row">
-      {{Quizs[i].Text}}
-    </div>
-    <hr>
-    <form action="">
-      <div class="form-group">
-        <p *ngFor="let answer of Answers">
-          <input type="radio" name="{{Quizs[i].Id}}" value="answer.Id" [(ngModel)]="dapAnUser"
-            [ngModelOptions]="{standalone: true}" > {{answer.Text}}
-        </p>
-
-
-
-      </div>
-    </form>
-
-
-  </div>
-  <div class="card-footer text-muted">
-
-  </div>
+<!-- canh phải thì dùng d-flex -->
+<div class="d-flex justify-content-end">
+    <button class="btn btn-danger float-right" id="demo"></button>
 </div>
 
-<button class="btn btn-primary" style="margin:10px" (click)="Previous()">Previous</button>
-<button class="btn btn-primary" (click)="Next()">Next</button>
+<form action="" #formControl="ngForm" (ngSubmit)="onSubmit(formControl)">
+    <!-- <button type="submit">coi formControl</button> -->
+    <div class="container">
+        <div class="card" *ngFor="let quiz of Quizs| paginate: { itemsPerPage: 1, currentPage: cur }">
+            <div class="card-header" style="background: greenyellow;">
+                {{tenMonHoc}}
+            </div>
+            <div class="card-body bg-dark text-white">
+                <div class="row alert alert-danger">{{quiz.Text}}</div>
+                <hr>
+                <!-- form chứa 4 đáp án -->
+                <form action="">
+                    <div class="form-group">
+                        <!-- 1 cái form check là 1 cái radio button -->
+                        <div class="form-check" *ngFor="let x of quiz.Answers">
+                            <!-- <input class="form-check-input" type="radio" name="{{quiz.Id}}" value="{{x.Id}}"
+                                [(ngModel)]="dapAnUser">
+                            <label class="form-check-label">
+                                {{x.Text}}
+                            </label> -->
+
+                            <label class="container">{{x.Text}}
+                                <input type="radio" name="{{quiz.Id}}" value="{{x.Id}}" [(ngModel)]="dapAnUser">
+                                <span class="checkmark"></span>
+                            </label>
+
+
+                        </div>
+                        <br>
+
+                        <button class="btn btn-primary" (click)="submit(quiz)">Submit</button>
+                        <!-- <button class="btn btn-primary" (click)="Next">Next</button> -->
+                    </div>
+                </form>
+
+
+
+
+
+            </div>
+            <div class="card-footer text-muted alert " style="background: greenyellow;">
+                <span style="font-weight: bold;color:black">Mark: {{mark}}/{{Quizs.length}}</span>
+            </div>
+        </div>
+        <br><br>
+        <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+    </div>
+
+</form>

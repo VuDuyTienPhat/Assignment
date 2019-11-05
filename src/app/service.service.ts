@@ -54,13 +54,11 @@ export class DataService {
     return this.http.get(this.urlStudents)
   }
   //lấy họ tên của user sau khi đăng nhập:
-  public username;
+  username;
   themTen(u){
     this.username=u;
   }
-  getTen(){
-    return this.username;
-  }
+  
 
   updateStudent(student: Student) {
     const httpOptions = {
@@ -69,6 +67,10 @@ export class DataService {
     return this.http.put(`../assets/Students.json`, student, httpOptions)
 
   }
+
+  //chứa subjects.json
+  subjects;
+
 
 
 

@@ -1,4 +1,4 @@
-
+/* 
 
 .nav-item :hover {
     background-color: rgb(180, 180, 86);
@@ -51,4 +51,12 @@
     background: black;
   
 
+} */
+
+.w3-bar a{
+    color:#007bff;
+    font-weight: bold;;
+}
+.w3-bar a:hover{
+    background:yellow;
 }
