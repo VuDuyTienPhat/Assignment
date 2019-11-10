@@ -22,8 +22,8 @@ export class QuenmatkhauComponent implements OnInit {
   student = null;//tìm ra tg student trùng username và email
 HienThiMatKhau() {
   this.student=null;//để khi mỗi lần bấm lại là nó xóa tg student cũ đi
-  this.ds.getStudents().subscribe((data) => {
-    this.students = data;
+
+    this.students = this.ds.students;
     for (let i = 0; i < this.students.length; i++) {
       if (this.students[i].username == this.formSudent.username &&
         this.students[i].email == this.formSudent.email) {
@@ -45,14 +45,9 @@ HienThiMatKhau() {
     }
 
 
-    // console.log(this.students)
-    // student=this.students.find(x=>{
-    //   return x.username==this.formSudent.username&&x.email==this.formSudent.email;
-    // });
-    // console.log(student);
-    // alert('mật khẩu của bạn là: ' + student.password)
+   
 
-  });
+
 
 }
 

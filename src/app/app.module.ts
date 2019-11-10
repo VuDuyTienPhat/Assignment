@@ -71,7 +71,7 @@ import { ResultComponent } from './result/result.component';
         {path:'thiTN/:Id',component:ThiTnComponent},
         {path:'result',component:ResultComponent},
        
-        // { path: '**', redirectTo: 'trangchu', pathMatch: 'full' },
+        { path: '**', redirectTo: 'trangchu', pathMatch: 'full' },
       ]
     )
   ],

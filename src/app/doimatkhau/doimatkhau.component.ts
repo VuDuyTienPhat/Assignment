@@ -28,12 +28,14 @@ export class DoimatkhauComponent implements OnInit {
     })
 
   }
+  coLoi:Boolean;
   DoiMatKhau() {
     //thay đổi password trongg this.ds.students
     for (let i = 0; i < this.ds.students.length; i++) {
       if (this.ds.students[i].username == this.username && this.ds.students[i].password == this.passwordCu) {
         if (this.passwordMoi !== this.nhapLaiPasswordMoi) {
-          alert('nhập lại mật khẩu mới k trùng khớp ')
+          alert('nhập lại mật khẩu mới k trùng khớp ');
+          return;
         }
         else {
           this.ds.students[i].password = this.passwordMoi;
@@ -43,7 +45,9 @@ export class DoimatkhauComponent implements OnInit {
           return;
         }
       }
+
     }
+    alert('Username hoặc password không đúng')
     //=====================CÁCH CŨ XÀI ĐC=====================//
     //   this.ds.getStudents().subscribe(data => {
     //     this.students = data;

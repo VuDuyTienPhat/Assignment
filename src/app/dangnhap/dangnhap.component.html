@@ -1,25 +1,50 @@
 <div class="container">
-    <h1 style="text-align: center;color:blue">Đăng Nhập</h1>
+    <h1 style="text-align: center;color:green"> Đăng nhập
+    </h1>
     <br>
     <form>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="formGroupExampleInput">Username</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="formStudent.username"
-                [ngModelOptions]="{standalone: true}">
+      
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                        [(ngModel)]="formStudent.username" [ngModelOptions]="{standalone: true}">
+ 
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Mật khẩu</label>
             <input type="password" class="form-control" id="formGroupExampleInput2" [(ngModel)]="formStudent.password"
-                [ngModelOptions]="{standalone: true}">
-            <a [routerLink]="['/quenmatkhau']" style="text-decoration: none">Quên mật khẩu</a><br>
-            <!-- <a href="" style="text-decoration: none">Đổi mật khẩu</a> -->
+                [ngModelOptions]="{standalone: true}"><br>
+
+            <div class="d-flex flex-row-reverse bd-highlight mb-3">
+                <a [routerLink]="['/quenmatkhau']" style="text-decoration: none;color:cornflowerblue">
+                    Quên mật khẩu
+                </a><br>
+            </div>
+        </div> -->
+        <div class="input-container">
+            <i class="fa fa-user icon"></i>
+            <input class="input-field" type="text" placeholder="Username" name="usrnm"
+                [(ngModel)]="formStudent.username" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input class="input-field" type="password" placeholder="Password" name="psw"
+                [(ngModel)]="formStudent.password" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="d-flex flex-row-reverse bd-highlight mb-3">
+            <a [routerLink]="['/quenmatkhau']" style="text-decoration: none;color:cornflowerblue">
+                Quên mật khẩu
+            </a><br>
         </div>
         <div>
-            <button type="buuto" class="btn btn-primary mb-2" (click)="Dangnhap()">Đăng Nhập</button>
+            <button type="submit" class="btn btn-primary mb-2" (click)="Dangnhap()">Đăng Nhập</button>
         </div><br>
-        <div [hidden]="dangNhapThanhCong" >
+
+
+        <div [hidden]="dangNhapThanhCong">
             <h2 class="alert alert-success">Đăng nhập thành công!</h2>
-            
+
         </div>
         <div [hidden]="nhapSaiThongTin">
             <h2 class="alert alert-danger">Username hoặc Password không đúng!</h2>

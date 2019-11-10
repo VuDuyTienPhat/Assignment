@@ -1,10 +1,18 @@
-<h3 style="text-align: center;" class="alert alert-success">Xin chào <span style="color:red">{{this.y.username}}</span></h3>
+<div class="glow">
+    <marquee behavior="scroll" direction="right" scrollamount="10">Welcome <span
+            style="color:red">{{this.y.username}}</span>
+        to our website</marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="12">Đây là trang web thi trắc nghiệm Online free</marquee>
+</div>
+<br>
+
+
 <div class="row">
     <div class="col-6" *ngFor="let monHoc of listMonHoc | paginate: { itemsPerPage: 4, currentPage: p } ">
         <div class="card text-center">
             <a [routerLink]="['/thiTN',monHoc.Id]" style="text-decoration: none;">
                 <div>
-                    <img src="../../assets/images/{{monHoc.Logo}}" alt="..."  width="50%">
+                    <img src="../../assets/images/{{monHoc.Logo}}" alt="..." width="50%">
                 </div>
                 <div class="card-footer text-muted" style="height: auto; ">
                     {{monHoc.Name}}

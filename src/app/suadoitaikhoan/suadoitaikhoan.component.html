@@ -14,7 +14,7 @@
                     [ngModelOptions]="{standalone: true}">
             </div>
             <div class="col-md-4 mb-3">
-                <label for="validationCustomUsername">Email</label>
+                <i class="fas fa-envelope-square"></i> <label for="validationCustomUsername">Email</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="validationCustomUsername" placeholder="abc@gmail.com"
                         [(ngModel)]="formSudent.email" [ngModelOptions]="{standalone: true}">
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <label for="exampleInputEmail1" style="margin-top: 10px;">Giới Tính:</label>
+        <label for="exampleInputEmail1" style="margin-top: 10px;"> Giới Tính:</label>
         <br>
         <input type="radio" name="gioitinh" value="nam" [(ngModel)]="formSudent.gender"
             [ngModelOptions]="{standalone: true}"> Nam<br>

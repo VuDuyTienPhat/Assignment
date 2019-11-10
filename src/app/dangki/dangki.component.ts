@@ -10,31 +10,28 @@ export class DangkiComponent implements OnInit {
   formStudent = {
     username: null,
     password: null,
-    fullname: null,
     email: null,
-    gender: null,
-    birthday: new Date(),
   }
-  students:any;//chứa dl students.json
+  students: any;//chứa dl students.json
 
-    
-  constructor(private ds:DataService) { }
+
+  constructor(private ds: DataService) { }
 
   ngOnInit() {
-    this.ds.getStudents().subscribe(data=>{
-      this.students=data;
-    })
+    // this.ds.getStudents().subscribe(data=>{
+    //   this.students=data;
+    // })
+    this.students=this.ds.students;
+    console.log(`this.students=`, this.students)
   }
   Addthongtin() {
-    this.students.push(this.formStudent)
+    this.ds.themTaiKhoan(this.formStudent);
     this.formStudent = {
       username: null,
       password: null,
-      fullname: null,
       email: null,
-      gender: null,
-      birthday: new Date(),
     }
+    alert('đăng kí thành công!')
   }
 
 }

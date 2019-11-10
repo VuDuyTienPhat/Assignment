@@ -1,55 +1,67 @@
 <div class="container">
-    <H1 style="text-align: center;color:red;">Đăng Ký</H1>
+    <H1 style="text-align: center;color:green;">Đăng Ký(*Có validation)</H1>
     <br>
-    <form #studentForm>
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom01">Họ và tên</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Enter your fullname"
-                    [(ngModel)]="formStudent.fullname" [ngModelOptions]="{standalone: true}" name="hoten"
-                    #hoTenControl="ngModel" required>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Ngày tháng năm sinh</label>
-                <input type="date" class="form-control" id="validationCustom02" [(ngModel)]="formStudent.birthday"
-                    [ngModelOptions]="{standalone: true}">
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustomUsername">Email</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="validationCustomUsername" placeholder="enter your email"
-                        [(ngModel)]="formStudent.email" [ngModelOptions]="{standalone: true}">
-                </div>
-            </div>
+    <form #studentForm="ngForm">
+        <!-- USERNAME -->
+        <div class="form-group ">
+            <i class="fas fa-user"></i><label>Username</label>
+            <input type="text" class="form-control" [(ngModel)]="formStudent.username" name="username"
+                #usernameControl="ngModel" pattern="[^' ']+" placeholder="Nhập username" required
+                [class.is-invalid]="usernameControl.touched&&usernameControl.invalid"
+                [class.is-valid]="usernameControl.touched&&usernameControl.valid">
+            <small class="form-text text-danger" *ngIf="usernameControl.touched&&usernameControl.errors?.required">
+                Username k được bỏ trống
+            </small>
+            <small class="form-text text-danger" *ngIf="usernameControl.touched&&usernameControl.errors?.pattern">
+                Username k được có khoảng trắng
+            </small>
         </div>
-        <label for="exampleInputEmail1">Tài Khoản</label>
-        <label for="exampleInputEmail1" style="margin-left: 350px">Mật Khẩu</label>
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="nhập tài khoản" [(ngModel)]="formStudent.username"
-                    [ngModelOptions]="{standalone: true}">
-            </div>
+        <!-- END USERNAME -->
 
-            <div class="col">
-                <input type="password" class="form-control" placeholder="Nhập mật khẩu"
-                    [(ngModel)]="formStudent.password" [ngModelOptions]="{standalone: true}">
-            </div>
+        <!-- Email -->
+        <div class="form-group ">
+            <i class="fas fa-envelope-square"></i><label>Email khôi phục tài khoản</label>
+            <input type="email" class="form-control" name="email" required email #emailControl="ngModel"
+                [(ngModel)]="formStudent.email" 
+                [class.is-invalid]="emailControl.touched&&emailControl.invalid"
+                [class.is-valid]="emailControl.touched&&emailControl.valid"
+                placeholder="Nhập Email">
+
+            <small class="form-text text-danger" *ngIf="emailControl.touched&&emailControl.errors?.required">
+                Email k được bỏ trống
+            </small>
+            <small class="form-text text-danger" *ngIf="emailControl.errors?.email">
+                Email k đúng định dạng
+            </small>
+
         </div>
 
-        <label for="exampleInputEmail1" style="margin-top: 10px;">Giới Tính:</label>
-        <br>
-        <input type="radio" name="gioitinh" value="true" [(ngModel)]="formStudent.gender"
-            [ngModelOptions]="{standalone: true}"> Nam<br>
-        <input type="radio" name="gioitinh" value="false" [(ngModel)]="formStudent.gender"
-            [ngModelOptions]="{standalone: true}"> Nữ<br>
-        <br>
-        <button type="submit" class="btn btn-primary" (click)="Addthongtin();studentForm.reset()">Submit</button>
+        <!--END Email -->
+
+        <!-- Password -->
+        <div class="form-group ">
+            <i class="fas fa-key"></i><label>Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Nhập Password"
+                [(ngModel)]="formStudent.password" #passwordControl="ngModel"
+                [class.is-invalid]="passwordControl.touched&&passwordControl.invalid" required minlength=6
+                [class.is-valid]="passwordControl.touched&&passwordControl.valid">
+            <small class="form-text text-danger" *ngIf="passwordControl.touched&&passwordControl.errors?.required">
+                Password k được bỏ trống
+            </small>
+            <small class="form-text text-danger" *ngIf="passwordControl.errors?.minlength">
+                Password phải có ít nhất 6 kí tự
+            </small>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" [disabled]="studentForm.invalid"
+            (click)="Addthongtin();studentForm.reset()">Submit</button>
     </form>
     <br>
 
-    <div *ngIf="hoTenControl.touched&&hoTenControl.valid==false">
+    <!-- <div *ngIf="hoTenControl.touched&&hoTenControl.valid==false">
         <h4 class="alert alert-danger">Họ và tên không được bỏ trống</h4>
-    </div>
+    </div> -->
 
     <h2 style="color:red">Danh sách tài khoản đã đăng ký</h2>
     <table class="table">
@@ -57,20 +69,14 @@
             <tr>
                 <th scope="col">username</th>
                 <th scope="col">password</th>
-                <th scope="col">fullname</th>
-                <th scope="col">birthday</th>
                 <th scope="col">email</th>
-                <th scope="col">gender</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let sv of students">
                 <th>{{sv.username}}</th>
                 <td>{{sv.password}}</td>
-                <td>{{sv.fullname}}</td>
-                <td>{{sv.birthday| date :'dd-MM-yyyy'}}</td>
                 <td>{{sv.email}}</td>
-                <td>{{sv.gender}}</td>
             </tr>
         </tbody>
     </table>

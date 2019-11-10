@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lienhe.component.css']
 })
 export class LienheComponent implements OnInit {
-
+  firstname;
+  lastname;
+  subject;
   constructor() { }
 
   ngOnInit() {
+  }
+  onSubmit(){
+    this.firstname="";
+    this.lastname="";
+    this.subject=""
+    alert('đã gửi');
   }
 
 }

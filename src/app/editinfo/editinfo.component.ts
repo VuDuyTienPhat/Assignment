@@ -14,13 +14,13 @@ export class EditinfoComponent implements OnInit {
    students;
 
   ngOnInit() {
-    this.ds.getStudents().subscribe(data=>{
-      this.students=data;
+  
+      this.students=this.ds.students;
       this.loggedStudent=this.students.find(x=>{
         return x.username==this.ds.username
       });
       console.log('loggedStudent',this.loggedStudent)
-    })
+
   }
   luuThayDoi(){
       alert('đã thay đổi thành công!')

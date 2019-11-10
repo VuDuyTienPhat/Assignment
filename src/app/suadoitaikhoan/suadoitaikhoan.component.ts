@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../students'
+import { DataService } from '../service.service';
 @Component({
   selector: 'app-suadoitaikhoan',
   templateUrl: './suadoitaikhoan.component.html',
@@ -15,39 +16,11 @@ export class SuadoitaikhoanComponent implements OnInit {
     gender: "",
     birthday: new Date().toISOString().substring(0, 10),
   }
-  students: Student[] =
-    [
-      {
-        id: 1,
-        username: "teonv",
-        password: "iloveyou",
-        fullname: "Nguyễn Văn Tèo",
-        email: "teonv@fpt.edu.vn",
-        gender: "nam",
-        birthday: new Date(1995, 12, 21),
-      },
-      {
-        id: 2,
-        username: "pheonv",
-        password: "iloveyou",
-        fullname: "Nguyễn Văn Chí Phèo",
-        email: "pheonv@fpt.edu.vn",
-        gender: "nam",
-        birthday: new Date(1985, 10, 11),
-      },
-      {
-        id: 3,
-        username: "nopt",
-        password: "iloveyou",
-        fullname: "Phạm Thị Nở",
-        email: "nopt@fpt.edu.vn",
-        gender: "nu",
-        birthday: new Date(1993, 5, 15),
-      }
-    ]
-  constructor() { }
+  students;
+  constructor(private ds:DataService) { }
 
   ngOnInit() {
+    this.students=this.ds.students;
   }
   selectStudentId = -1;
   ShowEditStudent(student: Student) {

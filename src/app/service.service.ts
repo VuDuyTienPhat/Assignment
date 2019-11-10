@@ -39,7 +39,7 @@ export class DataService {
       "marks": "0",
       "id": 2
     }
-  ]
+  ];
   urlSubject = "../assets/Subjects.json";
   urlQuiz = "../assets/Quizs";
   urlStudents = "../assets/Students.json"
@@ -47,8 +47,9 @@ export class DataService {
   getSubjects() {
     return this.http.get(this.urlSubject)
   }
-  getQuiz(Id) {
-    return this.http.get(this.urlQuiz + `/${Id}.json`)
+  getQuiz(Id:String) {
+    // return this.http.get(this.urlQuiz + `/${Id}.json`)
+    return this.http.get(`${this.urlQuiz}/${Id}.json`);
   }
   getStudents() {
     return this.http.get(this.urlStudents)
@@ -58,6 +59,11 @@ export class DataService {
   themTen(u){
     this.username=u;
   }
+  themTaiKhoan(s){
+    this.students.push(s);
+  }
+  
+
   
 
   updateStudent(student: Student) {
@@ -70,6 +76,8 @@ export class DataService {
 
   //chứa subjects.json
   subjects;
+  //xác định xem đã đăng nhập hay chưa:
+  logged:Boolean=false;
 
 
 

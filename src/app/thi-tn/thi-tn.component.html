@@ -1,9 +1,14 @@
 <!-- canh phải thì dùng d-flex -->
-<div class="d-flex justify-content-end">
-    <button class="btn btn-danger float-right" id="demo"></button>
+
+<div class="d-flex justify-content-between">
+    <h6 class="alert alert-info" style="font-weight:bold">Hướng dẫn thi: Chọn đáp án và nhấn Submit
+    </h6>
+    <button class="btn btn-danger" id="demo"></button>
 </div>
 
-<form action="" #formControl="ngForm" (ngSubmit)="onSubmit(formControl)">
+<br>
+
+<form action="" #formControl="ngForm"  style="margin-bottom:0px;">
     <!-- <button type="submit">coi formControl</button> -->
     <div class="container">
         <!-- CARD -->
@@ -16,32 +21,41 @@
                 <div class="row alert alert-danger">{{quiz.Text}}</div>
                 <hr>
                 <!-- 4 lựa chọn -->
-                <form action="">
-                    <div class="form-group">
-                        <!-- 1 cái form check là 1 cái radio button -->
-                        <div class="form-check" *ngFor="let x of quiz.Answers">
-                            <label [class.container]=true>{{x.Text}}
-                                <input type="radio" name="{{quiz.Id}}" value="{{x.Id}}" [(ngModel)]="dapAnUser"
-                                    [disabled]="disableInput">
-                                <span class="checkmark"></span>
-                            </label>
 
+                <div class="form-group">
+                    <!-- 1 cái form check là 1 cái radio button -->
+                    <div class="form-check" *ngFor="let x of quiz.Answers"
+                        [class.xanhla]="timCauDung(quiz.AnswerId,x.Id)" [class.do]="timCauSai(quiz.AnswerId,x.Id)">
+                        <label [class.container]=true>{{x.Text}}
+                            <input type="radio" name="{{quiz.Id}}" value="{{x.Id}}" [(ngModel)]="dapAnUser"
+                                [disabled]="disableInput"><i [hidden]="!timCauDung(quiz.AnswerId,x.Id)"
+                                class="fa fa-check-circle" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle" aria-hidden="true"
+                                [hidden]="!timCauSai(quiz.AnswerId,x.Id)"></i>
+                            <span class="checkmark"></span>
+                        </label>
 
-                        </div>
-                        <br>
-                        <div class="d-flex justify-content-between">
-                            <button class="btn btn-outline-success btn-lg" (click)="submit(quiz)"
-                                style="font-weight: bold;color:yellow" [disabled]="disableSubmit">Submit
-                            </button>
-                            <button class="btn btn-primary btn-lg" (click)="Next()" 
-                            [disabled]="disableButtonNext">Next
-                            </button>
-                        </div>
-
-                      
 
                     </div>
-                </form>
+                    <br>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-outline-success btn-lg" (click)="submit(quiz)"
+                            style="font-weight: bold;color:yellow" [disabled]="disableSubmit">Submit
+                        </button>
+                        <button class="btn btn-primary btn-lg" (click)="Next()" [disabled]="disableButtonNext">Next
+                        </button>
+                    </div>
+                    <br>
+                    <div *ngIf="chuaChonDapAn" class="alert alert-warning">
+                        Bạn chưa chọn đáp án
+                    </div>
+                    <div *ngIf="thongBaoChonDung" class="alert alert-success">Oh yeah, bạn làm rất tốt, hãy tiếp tục
+                        nào!!</div>
+                    <div *ngIf="thongBaoChonSai" class="alert alert-danger">Sai rồi <i class="far fa-frown"></i>, nhưng chưa sao cả hãy chọn bừa tiếp để tìm đáp án đúng nào <i class="far fa-smile-beam"></i> 
+                        </div>
+
+                </div>
+
                 <!-- END chứa 4 lựa chọn -->
             </div>
             <!-- END card-body  -->
@@ -58,3 +72,6 @@
     </div>
 
 </form>
+<div id="myProgress">
+        <div id="myBar"></div>
+    </div>

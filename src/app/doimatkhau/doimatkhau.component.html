@@ -1,35 +1,41 @@
 <div class="container">
     <br>
+    <h2 style="color:green;text-align:center">Đổi mật khẩu</h2>
     <form>
         <div class="form-group">
-            <label for="formGroupExampleInput">Nhập
+            <i class="fas fa-user"></i><label for="formGroupExampleInput">Nhập
                 Username</label>
             <!-- ô input -->
             <input type="text" class="form-control" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
         </div>
-        <div class="form-group">
-            <label for="formGroupExampleInput">Nhập mật
+
+       
+        <div class="form-group"> <i class="fas fa-key"></i><label for="formGroupExampleInput">Nhập mật
                 khẩu cũ</label>
             <!-- ô input -->
             <input type="text" class="form-control" [(ngModel)]="passwordCu" [ngModelOptions]="{standalone: true}">
         </div>
 
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Nhập mật khẩu mới</label>
+
+        
+        <div class="form-group"> <i class="fas fa-key"></i><label for="formGroupExampleInput2">Nhập mật khẩu mới</label>
             <!-- ô input -->
             <input type="text" class="form-control" [(ngModel)]="passwordMoi" [ngModelOptions]="{standalone: true}">
         </div>
 
-        <div class="form-group">
-            <label for="formGroupExampleInput">Nhập Lại mật
+
+        
+        <div class="form-group"><i class="fas fa-key"></i><label for="formGroupExampleInput">Nhập Lại mật
                 khẩu mới</label>
             <!-- ô input -->
-            <input type="text" class="form-control" [(ngModel)]="nhapLaiPasswordMoi" [ngModelOptions]="{standalone: true}">
+            <input type="text" class="form-control" [(ngModel)]="nhapLaiPasswordMoi"
+                [ngModelOptions]="{standalone: true}">
         </div>
-        <button class="btn btn-success" (click)="DoiMatKhau()">Submit</button>
+        <button class="btn btn-success" (click)="DoiMatKhau()">Xác nhận</button>
     </form>
-    {{passwordCu}}
 </div>
+
+
 
 <!-- <h1>Mảng students.json</h1>
 <h4 style="color:red;font-weight: bold;">{{this.students|json}}</h4> -->
