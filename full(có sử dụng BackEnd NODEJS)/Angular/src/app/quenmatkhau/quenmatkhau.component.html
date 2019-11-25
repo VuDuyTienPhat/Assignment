@@ -1,0 +1,23 @@
+<div class="container">
+
+
+
+    <h1 style="color:green   ;text-align:center">Quên mật khẩu</h1>
+    <form #formControl="ngForm">
+        <div class="form-group">
+            <i class="fas fa-user"></i> <label for="validationCustom01"> Username</label>
+            <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="formSudent.username"
+                name="username" placeholder="Nhập username của bạn" [(ngModel)]="formSudent.username">
+        </div>
+
+        <div class="form-group">
+            <i class="fas fa-envelope-square"></i><label for="validationCustomUsername">Email</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="validationCustomUsername" placeholder="Nhập email của bạn"
+                    [(ngModel)]="formSudent.email" name="email">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success mb-2" (click)="HienThiMatKhau(formControl)">Submit</button>
+    </form>
+
+</div>

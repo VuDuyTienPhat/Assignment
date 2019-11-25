@@ -1,0 +1,21 @@
+<div class="container">
+    <br>
+    <h2 style="color:green;text-align:center">Đổi mật khẩu</h2>
+    <form #formControl="ngForm">
+    
+        <div class="form-group"> <i class="fas fa-key"></i><label for="formGroupExampleInput2">Nhập mật khẩu mới</label>
+            <!-- ô input -->
+            <input type="text" class="form-control" [(ngModel)]="passwordMoi" name="passwordMoi">
+        </div>
+
+
+        
+    
+        <button class="btn btn-success" (click)="DoiMatKhau(formControl)">Xác nhận</button>
+    </form>
+</div>
+
+
+
+<!-- <h1>Mảng students.json</h1>
+<h4 style="color:red;font-weight: bold;">{{this.students|json}}</h4> -->
